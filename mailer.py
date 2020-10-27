@@ -1,6 +1,6 @@
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from flask import render_template
+from jinja2 import Template
 
 
 class Mailer():
@@ -23,6 +23,5 @@ class Mailer():
             'better_mixture_exists': data_from_xml.better_mixture_exists,
             'margin_diff': data_from_xml.margin_diff,
         }
-
-        letter_text = render_template("email_template.html", data=data)
+        letter_text = Template(open("email_template.html").read()).render(var="TEXT", data=data)
         self.msg.attach(MIMEText(letter_text, 'html'))
