@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+       /* Add custom classes and styles that you want inlined here */
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <div class="card my-5">
+        <div class="card-body">
+          <div class="container">
+      <div class="card my-5">
+        <div class="card-body">
+          <div style="text-align: right">
+          <h1> !ניתחנו את תמהיל המשכנתא שלך</h1>
+<hr/>
+
+שלום {{ data.name_of_lender_1 }},
+ניתחנו את תמהיל המשכנתא ששלחת לנו. הניתוח פורסם בקבוצת הפייסבוק ובפורום של Finwiz
+            כתמהיל מספר {{ data.Analysis_number }}.
+לנוחיותך, קישור לקבוצת הפייסבוק ולפורום המשכנתאות באתר של Finwiz.
+ <a class="btn btn-primary" href="#">  שו לפייסבוק ג   </a>         <a class="btn btn-primary" href="#">גשו לפורום</a>
+ <hr/>
+{% if data.show_optimal_reference %}
+השוונו את הריביות שקיבלת בעת לקיחת המשכנתא אל מול הריביות הנהוגות כיום. רמת הריביות כיום (אשר מחושבת על ידי מרווח שוק) נמוכה ב{{ data.margin_diff }}% ביחס לרמת הריביות כשנטלת את המשכנתא שלך.
+אנחנו מעריכים שאפשר לחסוך {{ data.money_saved_from_interest }} ש"ח כתוצאה ממשא ומתן על ריביות.
+{% if data.better_mixture_exists %}
+בנוסף על כך, על ידי שינוי התמהיל, ניתן לחסוך {{  data.money_saved_from_mixture }} ש"ח נוספים.
+כלומר, סך פוטנציאל החיסכון הכספי כתוצאה מהליך ייעוץ מקצועי מוערך בכ – {{  data.money_saved_from_mixture + data.money_saved_from_interest }} ש"ח.
+{% endif %}
+<hr/>
+{% endif %}
+אם הניתוח שלנו יועיל לכם – נשמח אם תוכלו לספר עלינו גם לחבריכם, על מנת שגם הם יוכלו להנות מניתוח חינמי של המשכנתא שלהם!
+<a class="btn btn-primary" href="#">תודה ורבה ובהצלחה,
+אייל ריטברג מ Finwiz</a>
+          </div>
+
+
+        </div>
+      </div>
+            <div style="text-align: center">
+            <a href="#">Finwiz</a>
+            <a href="#">service@mashkanta4.me</a>
+          <a class="btn btn-primary" href="#">Here must be a facebook button</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
