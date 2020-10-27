@@ -2,6 +2,9 @@ import xmltodict
 
 
 class DataFromXml(object):
+    """[summary]
+    Parses XML file and creates corresponding python object.
+    """
 
     def __init__(self, xml_file):
         xml_text = xml_file.read()
