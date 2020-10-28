@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<email_information>
+   <email_data>
+      <Analysis_number>5898</Analysis_number>
+      <!-- <name_of_lender_1>maxgerb@gmail.com</name_of_lender_1> -->
+      <name_of_lender_1>nchernov@gmail.com</name_of_lender_1>
+      <name_of_lender_2>eyalritt@gmail.com</name_of_lender_2>
+      <Fb_link>https://www.facebook.com/groups/144679486171484</Fb_link>
+      <Forum_link>www.mashkanta4.me/forum</Forum_link>
+      <is_send_to_forum>False</is_send_to_forum>
+   </email_data>
+   <saving_data>
+      <show_optimal_reference>False</show_optimal_reference>
+      <money_saved_from_interest>0</money_saved_from_interest>
+      <money_saved_from_mixture>0</money_saved_from_mixture>
+      <better_mixture_exists>1</better_mixture_exists>
+      <margin_diff>0</margin_diff>
+   </saving_data>
+</email_information>
