@@ -1,5 +1,5 @@
-from work_mailer import WorkMailer
-from xml_parser import DataFromXml
+from app.work_mailer import WorkMailer
+from app.xml_parser import DataFromXml
 
 
 def send_email(xml_file):
