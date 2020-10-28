@@ -1,7 +1,10 @@
 import sys
 import click
+from dotenv import load_dotenv
 
 from app import send_email
+
+load_dotenv()
 
 
 @click.command()
