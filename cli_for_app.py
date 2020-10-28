@@ -5,7 +5,7 @@ from app import send_email
 
 
 @click.command()
-@click.option('--xml-path', prompt='Model', help='Path to xml file.')
+@click.option('--xml-path', help='Path to xml file.')
 def start(xml_path):
     try:
         with open(xml_path, "rb") as f:
