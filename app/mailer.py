@@ -1,15 +1,18 @@
+import os
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.multipart import MIMEMultipart
 from jinja2 import Template
 
+SMTP_EMAIL = os.getenv("SMTP_EMAIL", None)
+
 
 class Mailer():
     def __init__(self, data_from_xml):
         self.msg = MIMEMultipart()
-        self.msg['From'] = data_from_xml.name_of_lender_2
-        self.msg['To'] = ', '.join(data_from_xml.name_of_lender_1)
+        self.msg['From'] = SMTP_EMAIL
+        self.msg['To'] = data_from_xml.name_of_lender_1
         self.msg['Subject'] = "Sample subject"
         with open('app/myimagecid.png', 'rb') as f:
             # set attachment mime and file name, the image type is png
@@ -39,6 +42,8 @@ class Mailer():
         }
         try:
             letter_text = Template(open("app/email_template.html", "rt", encoding="utf-16").read()).render(data=self.data)
+            # with open("index.html", "wt") as f:
+            #     f.write(letter_text)
         except Exception as e:
             print(e)
             raise e
