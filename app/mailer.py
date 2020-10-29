@@ -14,32 +14,6 @@ class Mailer():
         self.msg['From'] = SMTP_EMAIL
         self.msg['To'] = data_from_xml.name_of_lender_1
         self.msg['Subject'] = data_from_xml.subject
-        with open('app/myimagecid.png', 'rb') as f:
-            # set attachment mime and file name, the image type is png
-            mime = MIMEBase('image', 'png', filename='myimagecid.png')
-            # add required header data:
-            mime.add_header('Content-Disposition', 'attachment', filename='myimagecid.png')
-            mime.add_header('X-Attachment-Id', '0')
-            mime.add_header('Content-ID', '<0>')
-            # read attachment file content into the MIMEBase object
-            mime.set_payload(f.read())
-            # encode with base64
-            encoders.encode_base64(mime)
-            # add MIMEBase object to MIMEMultipart object
-            self.msg.attach(mime)
-        with open('app/finwiz-logo.png', 'rb') as f:
-            # set attachment mime and file name, the image type is png
-            mime = MIMEBase('image', 'png', filename='finwiz-logo.png')
-            # add required header data:
-            mime.add_header('Content-Disposition', 'attachment', filename='finwiz-logo.png')
-            mime.add_header('X-Attachment-Id', '1')
-            mime.add_header('Content-ID', '<1>')
-            # read attachment file content into the MIMEBase object
-            mime.set_payload(f.read())
-            # encode with base64
-            encoders.encode_base64(mime)
-            # add MIMEBase object to MIMEMultipart object
-            self.msg.attach(mime)
         self.data = {
             'Analysis_number': data_from_xml.Analysis_number,
             'name_of_lender_1': data_from_xml.name_of_lender_1,
@@ -61,6 +35,32 @@ class Mailer():
                 # with open("index.html", "wt") as f:
                 #     f.write(letter_text)
                 self.msg.attach(MIMEText(letter_text, 'html', _charset="utf-16"))
+                with open('app/myimagecid.png', 'rb') as f:
+                    # set attachment mime and file name, the image type is png
+                    mime = MIMEBase('image', 'png', filename='myimagecid.png')
+                    # add required header data:
+                    mime.add_header('Content-Disposition', 'attachment', filename='myimagecid.png')
+                    mime.add_header('X-Attachment-Id', '0')
+                    mime.add_header('Content-ID', '<0>')
+                    # read attachment file content into the MIMEBase object
+                    mime.set_payload(f.read())
+                    # encode with base64
+                    encoders.encode_base64(mime)
+                    # add MIMEBase object to MIMEMultipart object
+                    self.msg.attach(mime)
+                with open('app/finwiz-logo.png', 'rb') as f:
+                    # set attachment mime and file name, the image type is png
+                    mime = MIMEBase('image', 'png', filename='finwiz-logo.png')
+                    # add required header data:
+                    mime.add_header('Content-Disposition', 'attachment', filename='finwiz-logo.png')
+                    mime.add_header('X-Attachment-Id', '1')
+                    mime.add_header('Content-ID', '<1>')
+                    # read attachment file content into the MIMEBase object
+                    mime.set_payload(f.read())
+                    # encode with base64
+                    encoders.encode_base64(mime)
+                    # add MIMEBase object to MIMEMultipart object
+                    self.msg.attach(mime)
         except Exception as e:
             print(e)
             raise e
