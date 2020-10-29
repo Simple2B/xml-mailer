@@ -41,10 +41,13 @@ class Mailer():
             'margin_diff': data_from_xml.margin_diff,
         }
         try:
-            letter_text = Template(open("app/email_template.html", "rt", encoding="utf-16").read()).render(data=self.data)
-            # with open("index.html", "wt") as f:
-            #     f.write(letter_text)
+            with open("app/email_template.html", "rt", encoding="utf-16") as f_template:
+                template = Template(f_template.read())
+                letter_text = template.render(data=self.data)
+                # Debug propose only
+                # with open("index.html", "wt") as f:
+                #     f.write(letter_text)
+                self.msg.attach(MIMEText(letter_text, 'html', _charset="utf-16"))
         except Exception as e:
             print(e)
             raise e
-        self.msg.attach(MIMEText(letter_text, 'html', _charset="utf-16"))
