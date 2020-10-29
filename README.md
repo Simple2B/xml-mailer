@@ -10,7 +10,7 @@ $ python3 send_email.py --xml-path <path to XML>
     ```bash
     python3 -V
     ```
-    1. Make sure python3-venv is installed. The easiest way is just installing it using the command:
+    2. Make sure python3-venv is installed. The easiest way is just installing it using the command:
     ```bash
     sudo apt-get install python3-venv
     ```
