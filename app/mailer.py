@@ -27,7 +27,7 @@ class Mailer():
             encoders.encode_base64(mime)
             # add MIMEBase object to MIMEMultipart object
             self.msg.attach(mime)
-        with open('finwiz-logo.png', 'rb') as f:
+        with open('app/finwiz-logo.png', 'rb') as f:
             # set attachment mime and file name, the image type is png
             mime = MIMEBase('image', 'png', filename='finwiz-logo.png')
             # add required header data:
