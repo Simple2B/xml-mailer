@@ -2,3 +2,4 @@
 __pycache__/
 my_message.txt
 .env
+/email_data.xml
