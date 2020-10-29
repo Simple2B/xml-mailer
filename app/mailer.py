@@ -13,7 +13,7 @@ class Mailer():
         self.msg = MIMEMultipart()
         self.msg['From'] = SMTP_EMAIL
         self.msg['To'] = data_from_xml.name_of_lender_1
-        self.msg['Subject'] = "Sample subject"
+        self.msg['Subject'] = data_from_xml.subject
         with open('app/myimagecid.png', 'rb') as f:
             # set attachment mime and file name, the image type is png
             mime = MIMEBase('image', 'png', filename='app/myimagecid.png')

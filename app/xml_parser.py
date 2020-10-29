@@ -13,6 +13,7 @@ class DataFromXml(object):
         self.load_saving_data(xml_dict['email_information']['saving_data'])
 
     def load_email_data(self, email_data_dict):
+        self.subject = email_data_dict['subject'] if "subject" in email_data_dict else "Finwiz"
         self.Analysis_number = email_data_dict['Analysis_number']
         self.name_of_lender_1 = email_data_dict['name_of_lender_1']
         self.name_of_lender_2 = email_data_dict['name_of_lender_2']
