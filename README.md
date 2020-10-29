@@ -36,7 +36,7 @@ python -m venv .venv
 ```bash
 pip -r requirements.txt
 ```
-6. One has to unzip env.zip archive to xml-mailer directory.
+6. One has to unzip env.zip archive to xml-mailer directory. After unzipping .env file will appear. You should enter the email address from which you will send mail and password to that email in .env file.
 
 7. Congratulations! Program is ready to use. Just use the command
 ```bash
