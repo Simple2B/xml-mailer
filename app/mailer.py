@@ -19,8 +19,21 @@ class Mailer():
             mime = MIMEBase('image', 'png', filename='app/myimagecid.png')
             # add required header data:
             mime.add_header('Content-Disposition', 'attachment', filename='app/myimagecid.png')
-            mime.add_header('X-Attachment-Id', '0')
-            mime.add_header('Content-ID', '<0>')
+            mime.add_header('X-Attachment-Id', 'main_image.png')
+            mime.add_header('Content-ID', '<main_image.png>')
+            # read attachment file content into the MIMEBase object
+            mime.set_payload(f.read())
+            # encode with base64
+            encoders.encode_base64(mime)
+            # add MIMEBase object to MIMEMultipart object
+            self.msg.attach(mime)
+        with open('app/finwiz-logo.png', 'rb') as f:
+            # set attachment mime and file name, the image type is png
+            mime = MIMEBase('image', 'png', filename='app/finwiz-logo.png')
+            # add required header data:
+            mime.add_header('Content-Disposition', 'attachment', filename='app/finwiz-logo.png')
+            mime.add_header('X-Attachment-Id', 'logo.png')
+            mime.add_header('Content-ID', '<logo.png>')
             # read attachment file content into the MIMEBase object
             mime.set_payload(f.read())
             # encode with base64
