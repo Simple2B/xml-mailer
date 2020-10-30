@@ -27,7 +27,7 @@ class WorkMailer(Mailer):
                 server.starttls()  # Use TLS
                 # Login to the email server
                 server.login(SMTP_EMAIL, SMTP_PASSWORD)
-                recipients = self.data['name_of_lender_1']
+                recipients = [self.data['name_of_lender_1'], self.data['name_of_lender_2'], ]
                 server.sendmail(
                     from_addr=SMTP_EMAIL,
                     to_addrs=recipients,

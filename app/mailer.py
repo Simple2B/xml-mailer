@@ -12,7 +12,7 @@ class Mailer():
     def __init__(self, data_from_xml):
         self.msg = MIMEMultipart()
         self.msg['From'] = SMTP_EMAIL
-        self.msg['To'] = data_from_xml.name_of_lender_1
+        self.msg['To'] = data_from_xml.name_of_lender_1 + ", " + data_from_xml.name_of_lender_2
         self.msg['Subject'] = data_from_xml.subject
         self.data = {
             'Analysis_number': data_from_xml.Analysis_number,
@@ -22,8 +22,8 @@ class Mailer():
             'Forum_link': data_from_xml.Forum_link,
             'is_send_to_forum': data_from_xml.is_send_to_forum,
             'show_optimal_reference': data_from_xml.show_optimal_reference,
-            'money_saved_from_interest': data_from_xml.money_saved_from_interest,
-            'money_saved_from_mixture': data_from_xml.money_saved_from_mixture,
+            'money_saved_from_interest': int(data_from_xml.money_saved_from_interest),
+            'money_saved_from_mixture': int(data_from_xml.money_saved_from_mixture),
             'better_mixture_exists': data_from_xml.better_mixture_exists,
             'margin_diff': data_from_xml.margin_diff,
         }
