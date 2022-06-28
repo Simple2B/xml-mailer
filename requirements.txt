@@ -3,3 +3,5 @@ Jinja2
 flake8
 python-dotenv
 xmltodict
+pytest
+black

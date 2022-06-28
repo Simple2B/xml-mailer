@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <email_information>
+      <email_data>
+        <email_address>yablunovsky.a@gmail.com</email_address>
+        <prepayment_calc>9500</prepayment_calc>
+
+        <calculation_type>False</calculation_type>
+
+        <loan_type>Credit 45</loan_type>
+        <months>10</months>
+        <loan_interest>32.5467564</loan_interest>
+        <remaining_principal>1000000</remaining_principal>
+        <months_to_repayment>20</months_to_repayment>
+        <interest_rate_date_of_repayment>54.57657</interest_rate_date_of_repayment>
+        <has_eligibility>יש</has_eligibility>
+        <month_bank_paid>2022, 6, 1</month_bank_paid>
+        <loan_end_date>2022, 9, 1</loan_end_date>
+        <submission_id>string</submission_id>
+      </email_data>
+    <saving_data>
+  </saving_data>
+</email_information>

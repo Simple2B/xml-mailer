@@ -7,8 +7,8 @@ from app.xml_parser import DataFromXml
 
 load_dotenv()
 
-SMTP_SERVER = os.getenv("SMTP_SERVER", None)
-SMTP_PORT = os.getenv("SMTP_PORT", None)
+MAIL_SERVER = os.getenv("MAIL_SERVER", None)
+MAIL_PORT = os.getenv("MAIL_PORT", None)
 SMTP_EMAIL = os.getenv("SMTP_EMAIL", None)
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", None)
 
@@ -23,8 +23,8 @@ class WorkMailer(Mailer):
     def send(self):
         try:
             # Connect to the server
-            with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-                server.starttls()  # Use TLS
+            with smtplib.SMTP_SSL(MAIL_SERVER, MAIL_PORT) as server:
+                # server.starttls()  # Use TLS
                 # Login to the email server
                 server.login(SMTP_EMAIL, SMTP_PASSWORD)
                 recipients = self.data['email_address']
