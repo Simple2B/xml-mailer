@@ -4,6 +4,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.multipart import MIMEMultipart
 from jinja2 import Template
+import datetime
 
 SMTP_EMAIL = os.getenv("SMTP_EMAIL", None)
 
@@ -12,20 +13,22 @@ class Mailer():
     def __init__(self, data_from_xml):
         self.msg = MIMEMultipart()
         self.msg['From'] = SMTP_EMAIL
-        self.msg['To'] = data_from_xml.name_of_lender_1 + ", " + data_from_xml.name_of_lender_2
-        self.msg['Subject'] = data_from_xml.subject
+        self.msg['To'] = data_from_xml.email_address
+        # self.msg['Subject'] = data_from_xml.subject
         self.data = {
-            'Analysis_number': data_from_xml.Analysis_number,
-            'name_of_lender_1': data_from_xml.name_of_lender_1,
-            'name_of_lender_2': data_from_xml.name_of_lender_2,
-            'Fb_link': data_from_xml.Fb_link,
-            'Forum_link': data_from_xml.Forum_link,
-            'is_send_to_forum': data_from_xml.is_send_to_forum,
-            'show_optimal_reference': data_from_xml.show_optimal_reference,
-            'money_saved_from_interest': int(data_from_xml.money_saved_from_interest),
-            'money_saved_from_mixture': int(data_from_xml.money_saved_from_mixture),
-            'better_mixture_exists': data_from_xml.better_mixture_exists,
-            'margin_diff': data_from_xml.margin_diff,
+            'email_address': data_from_xml.email_address,
+            'PREPAYMENT_CALC': "{:,}".format(int(data_from_xml.PREPAYMENT_CALC)),
+            'Calculation_type': bool(data_from_xml.Calculation_type),
+            'Loan_type': data_from_xml.Loan_type,
+            'Months': int(data_from_xml.Months),
+            'Loan_interest': float(format(data_from_xml.Loan_interest, ".2f")),
+            'Remaining_principal': "{:,}".format(int(data_from_xml.Remaining_principal)),
+            'Months_to_repayment': int(data_from_xml.Months_to_repayment),
+            'interest_rate_date_of_repayment': float(format(data_from_xml.interest_rate_date_of_repayment, ".2f")),
+            'Has_eligibility': data_from_xml.Has_eligibility,
+            'Month_bank_paid': datetime.datetime(data_from_xml.Month_bank_paid).strftime("%d.%m.%Y"),
+            'Loan_end_date': datetime.datetime(data_from_xml.Loan_end_date).strftime("%d.%m.%Y"),
+            'Submission_ID': data_from_xml.Submission_ID,
         }
         try:
             with open("app/email_template.html", "rt", encoding="utf-16") as f_template:
