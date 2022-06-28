@@ -17,6 +17,7 @@ class WorkMailer(Mailer):
     """[summary]
     Connects to SMTP server and sends email
     """
+
     def __init__(self, data_from_xml: DataFromXml):
         super().__init__(data_from_xml)
 
@@ -27,11 +28,9 @@ class WorkMailer(Mailer):
                 # server.starttls()  # Use TLS
                 # Login to the email server
                 server.login(SMTP_EMAIL, SMTP_PASSWORD)
-                recipients = self.data['email_address']
+                recipients = self.data["email_address"]
                 server.sendmail(
-                    from_addr=SMTP_EMAIL,
-                    to_addrs=recipients,
-                    msg=self.msg.as_string()
+                    from_addr=SMTP_EMAIL, to_addrs=recipients, msg=self.msg.as_string()
                 )
                 server.quit()  # Logout of the email server
         except smtplib.SMTPException as e:

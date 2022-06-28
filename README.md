@@ -6,7 +6,7 @@ $ python send_email.py --xml-path <path to XML>
 ```
 ## Installation tutorial
 0. I assume you are launching this program on Windows operating system. Prerequisites:
-    1. First of all one must be sure that Python 3.8 is installed. To check that use the command:
+    1. First of all one must be sure that Python 3.9 is installed. To check that use the command:
     ```bash
     python -V
     ```
@@ -36,8 +36,10 @@ python -m venv .venv
 ```bash
 pip -r requirements.txt
 ```
-6. One has to unzip env.zip archive to xml-mailer directory. After unzipping .env file will appear. You should enter the email address from which you will send mail and password to that email in .env file.
-
+6. One has to enter the command to unzip file to xml-mailer directory. After unzipping .env file will appear. You should enter the email address from which you will send mail and password to that email in .env file.
+```bash
+unzip env.zip
+```
 7. Congratulations! Program is ready to use. Just use the command
 ```bash
 python send_email.py --xml-path <path to XML>
