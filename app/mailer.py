@@ -20,7 +20,7 @@ class Mailer:
         self.msg = MIMEMultipart()
         self.msg["From"] = SMTP_EMAIL
         self.msg["To"] = data_from_xml.email_address
-        self.msg["Subject"] = "Test mail"
+        self.msg["Subject"] = data_from_xml.subject
         self.data = {
             "email_address": data_from_xml.email_address,
             "prepayment_calc": "{:,}".format(int(data_from_xml.prepayment_calc)),

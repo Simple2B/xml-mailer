@@ -2,7 +2,7 @@ import pathlib
 import pytest
 from send_email import parse_xml
 
-TEST_XML = (pathlib.Path(__file__).parent / "test.xml").resolve()
+TEST_XML = (pathlib.Path().parent / "example.xml").resolve()
 
 
 @pytest.mark.skip(reason="test sends email")

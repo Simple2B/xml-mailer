@@ -1,11 +1,9 @@
 import os
 import smtplib
-from dotenv import load_dotenv
 
 from app.mailer import Mailer
 from app.xml_parser import DataFromXml
 
-load_dotenv()
 
 MAIL_SERVER = os.getenv("MAIL_SERVER", None)
 MAIL_PORT = os.getenv("MAIL_PORT", None)
@@ -29,9 +27,12 @@ class WorkMailer(Mailer):
                 # Login to the email server
                 server.login(SMTP_EMAIL, SMTP_PASSWORD)
                 recipients = self.data["email_address"]
-                server.sendmail(
+                ret_val = server.sendmail(
                     from_addr=SMTP_EMAIL, to_addrs=recipients, msg=self.msg.as_string()
                 )
+                print("SMTP_EMAIL --- ", SMTP_EMAIL)
+                print("recipients --- ", recipients)
+                print("server.sendmail - returns:", ret_val)
                 server.quit()  # Logout of the email server
         except smtplib.SMTPException as e:
             print(e)

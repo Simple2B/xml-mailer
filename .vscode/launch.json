@@ -12,7 +12,7 @@
             "console": "integratedTerminal",
             "args": [
                 "--xml-path",
-                "tests/test.xml"
+                "example.xml"
             ]
         }
     ]

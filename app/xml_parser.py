@@ -13,6 +13,7 @@ class DataFromXml(object):
         # self.load_saving_data(xml_dict['email_information']['saving_data'])
 
     def load_email_data(self, email_data_dict):
+        self.subject = email_data_dict["subject"]
         self.email_address = email_data_dict["email_address"]
         self.prepayment_calc = email_data_dict["prepayment_calc"]
         self.calculation_type = email_data_dict["calculation_type"]
