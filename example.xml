@@ -2,7 +2,7 @@
   <email_information>
       <email_data>
         <email_address>to whom the letter</email_address>
-        <subject>Test email</subject>
+        <subject>name of the purpose of the letter</subject>
         <prepayment_calc>9500</prepayment_calc>
         <calculation_type>False</calculation_type>
         <loan_type>Credit 45</loan_type>
