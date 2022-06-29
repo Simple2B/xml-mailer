@@ -7,15 +7,16 @@ $ python send_email.py --xml-path <path to XML>
 
 `The code sample in which you need to enter data is in example.xml`
 ## Installation tutorial
-0. I assume you are launching this program on Windows operating system. Prerequisites:
-    1. First of all one must be sure that Python 3.9 is installed. To check that use the command:
-    ```bash
-    python -V
-    ```
-    2. Make sure pip is installed using the command
-    ```bash
-    python -m pip -V
-    ```
+
+  Prerequisites:
+  1. First of all one must be sure that Python 3.9 is installed. To check that use the command:
+  ```bash
+  python -V
+  ```
+  2. Make sure pip is installed using the command
+  ```bash
+  python -m pip -V
+  ```
 
 1. Take everything from the repository using
 ```bash
