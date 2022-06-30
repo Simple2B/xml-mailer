@@ -1,8 +1,8 @@
 import os
 import smtplib
 
-from app.mailer import Mailer
-from app.xml_parser import DataFromXml
+from email_script.mailer import Mailer
+from email_script.input_list_parser import DataFromInputList
 
 
 MAIL_SERVER = os.getenv("MAIL_SERVER", None)
@@ -16,14 +16,13 @@ class WorkMailer(Mailer):
     Connects to SMTP server and sends email
     """
 
-    def __init__(self, data_from_xml: DataFromXml):
+    def __init__(self, data_from_xml: DataFromInputList):
         super().__init__(data_from_xml)
 
     def send(self):
         try:
             # Connect to the server
             with smtplib.SMTP_SSL(MAIL_SERVER, MAIL_PORT) as server:
-                # server.starttls()  # Use TLS
                 # Login to the email server
                 server.login(SMTP_EMAIL, SMTP_PASSWORD)
                 recipients = self.data["email_address"]

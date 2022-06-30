@@ -1,0 +1,15 @@
+email_input = [
+    "yablunovsky.a@gmail.com",
+    9500,
+    "False",
+    "some text",
+    10,
+    32.5467564,
+    1000000,
+    20,
+    54.57657,
+    "יש",
+    "2022, 6, 1",
+    "2022, 9, 1",
+    "some text",
+]

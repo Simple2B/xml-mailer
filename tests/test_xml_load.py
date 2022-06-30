@@ -1,11 +1,8 @@
-import pathlib
 import pytest
-from send_email import parse_xml
+from email_script.send_mail import send_decorated_email
+from sample_data.values_list import email_input
 
-TEST_XML = (pathlib.Path().parent / "example.xml").resolve()
 
-
-@pytest.mark.skip(reason="test sends email")
+# @pytest.mark.skip(reason="test sends email")
 def test_xml_load():
-    # assert not parse_xml("bad_file_path")
-    assert parse_xml(TEST_XML)
+    assert send_decorated_email(email_input)

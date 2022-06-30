@@ -20,7 +20,7 @@ class Mailer:
         self.msg = MIMEMultipart()
         self.msg["From"] = SMTP_EMAIL
         self.msg["To"] = data_from_xml.email_address
-        self.msg["Subject"] = data_from_xml.subject
+        self.msg["Subject"] = "Some title"
         self.data = {
             "email_address": data_from_xml.email_address,
             "prepayment_calc": "{:,}".format(int(data_from_xml.prepayment_calc)),
@@ -41,7 +41,7 @@ class Mailer:
             "submission_id": data_from_xml.submission_id,
         }
         try:
-            templateLoader = jinja2.FileSystemLoader(searchpath="./app/")
+            templateLoader = jinja2.FileSystemLoader(searchpath="./email_script/")
             templateEnv = jinja2.Environment(loader=templateLoader)
             TEMPLATE_FILE = "email.html"
             template = templateEnv.get_template(TEMPLATE_FILE)
@@ -49,33 +49,6 @@ class Mailer:
 
             self.msg.attach(MIMEText(letter_text, "html", _charset="utf-8"))
 
-            # Example add picture to email attachment
-            # with open('app/myimagecid.png', 'rb') as f:
-            #     # set attachment mime and file name, the image type is png
-            #     mime = MIMEBase('image', 'png', filename='myimagecid.png')
-            #     # add required header data:
-            #     mime.add_header('Content-Disposition', 'attachment', filename='myimagecid.png')
-            #     mime.add_header('X-Attachment-Id', '0')
-            #     mime.add_header('Content-ID', '<0>')
-            #     # read attachment file content into the MIMEBase object
-            #     mime.set_payload(f.read())
-            #     # encode with base64
-            #     encoders.encode_base64(mime)
-            #     # add MIMEBase object to MIMEMultipart object
-            #     self.msg.attach(mime)
-            # with open('app/finwiz-logo.png', 'rb') as f:
-            #     # set attachment mime and file name, the image type is png
-            #     mime = MIMEBase('image', 'png', filename='finwiz-logo.png')
-            #     # add required header data:
-            #     mime.add_header('Content-Disposition', 'attachment', filename='finwiz-logo.png')
-            #     mime.add_header('X-Attachment-Id', '1')
-            #     mime.add_header('Content-ID', '<1>')
-            #     # read attachment file content into the MIMEBase object
-            #     mime.set_payload(f.read())
-            #     # encode with base64
-            #     encoders.encode_base64(mime)
-            #     # add MIMEBase object to MIMEMultipart object
-            #     self.msg.attach(mime)
         except Exception as e:
             print(e)
             raise e
