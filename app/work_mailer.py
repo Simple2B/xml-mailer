@@ -17,6 +17,7 @@ class WorkMailer(Mailer):
     """[summary]
     Connects to SMTP server and sends email
     """
+
     def __init__(self, data_from_xml: DataFromXml):
         super().__init__(data_from_xml)
 
@@ -28,7 +29,9 @@ class WorkMailer(Mailer):
                 server.login(SMTP_EMAIL, SMTP_PASSWORD)
                 recipients = self.data["email_address"]
                 ret_val = server.sendmail(
-                    from_addr=SMTP_EMAIL, to_addrs=recipients, msg=self.msg.as_string()
+                    from_addr=SMTP_EMAIL,
+                    to_addrs=recipients,
+                    msg=self.msg.as_string(),
                 )
                 print("SMTP_EMAIL --- ", SMTP_EMAIL)
                 print("recipients --- ", recipients)

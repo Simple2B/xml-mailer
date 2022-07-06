@@ -1,7 +1,7 @@
 email_input = [
     "yablunovsky.a@gmail.com",
     9500,
-    False,
+    True,
     "some text",
     10,
     32.5467564,
