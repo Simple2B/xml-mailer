@@ -4,33 +4,47 @@ from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.multipart import MIMEMultipart
 from jinja2 import Template
+import datetime
 
 SMTP_EMAIL = os.getenv("SMTP_EMAIL", None)
+
+def get_date(date):
+    date_type = [int(i) for i in date.split("-")]
+    format_date = datetime.datetime(date_type[0], date_type[1], date_type[2]).strftime(
+        "%d.%m.%Y"
+    )
+    return format_date
 
 
 class Mailer():
     def __init__(self, data_from_xml):
         self.msg = MIMEMultipart()
-        self.msg['From'] = SMTP_EMAIL
-        self.msg['To'] = data_from_xml.name_of_lender_1 + ", " + data_from_xml.name_of_lender_2
-        self.msg['Subject'] = data_from_xml.subject
+        self.msg["From"] = SMTP_EMAIL
+        self.msg["To"] = data_from_xml.email_address
+        self.msg["Subject"] = "פינוויז מגלה לכם מה תהיה עמלת הפרעון מהוקדם שלכם"
         self.data = {
-            'Analysis_number': data_from_xml.Analysis_number,
-            'name_of_lender_1': data_from_xml.name_of_lender_1,
-            'name_of_lender_2': data_from_xml.name_of_lender_2,
-            'Fb_link': data_from_xml.Fb_link,
-            'Forum_link': data_from_xml.Forum_link,
-            'is_send_to_forum': data_from_xml.is_send_to_forum,
-            'show_optimal_reference': data_from_xml.show_optimal_reference,
-            'money_saved_from_interest': int(data_from_xml.money_saved_from_interest),
-            'money_saved_from_mixture': int(data_from_xml.money_saved_from_mixture),
-            'better_mixture_exists': data_from_xml.better_mixture_exists,
-            'margin_diff': data_from_xml.margin_diff,
+            "email_address": data_from_xml.email_address,
+            "prepayment_calc": "{:,}".format(int(data_from_xml.prepayment_calc)),
+            "calculation_type": data_from_xml.calculation_type,
+            "loan_type": data_from_xml.loan_type,
+            "months": int(data_from_xml.months),
+            "loan_interest": round(float(data_from_xml.loan_interest), 2),
+            "remaining_principal": "{:,}".format(
+                int(data_from_xml.remaining_principal)
+            ),
+            "months_to_repayment": int(data_from_xml.months_to_repayment),
+            "interest_rate_date_of_repayment": round(
+                float(data_from_xml.interest_rate_date_of_repayment), 2
+            ),
+            "has_eligibility": data_from_xml.has_eligibility,
+            "month_bank_paid": get_date(data_from_xml.month_bank_paid),
+            "loan_end_date": get_date(data_from_xml.loan_end_date),
+            "submission_id": data_from_xml.submission_id,
         }
         try:
             with open("app/email_template.html", "rt", encoding="utf-16") as f_template:
                 template = Template(f_template.read())
-                letter_text = template.render(data=self.data)
+                letter_text = template.render(a=self.data)
                 # Debug propose only
                 # with open("index.html", "wt") as f:
                 #     f.write(letter_text)

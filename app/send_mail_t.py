@@ -1,5 +1,5 @@
 from app.work_mailer import WorkMailer
-from app.xml_parser import DataFromXml
+
 
 class DataFromArray:
     def __init__(self, email_input: list):
@@ -17,9 +17,9 @@ class DataFromArray:
         self.loan_end_date = email_input[11]
         self.submission_id = email_input[12]
 
-def send_email(xml_file):
-    data_from_xml = DataFromArray(xml_file)
-    # send e-mail
-    mailer = WorkMailer(data_from_xml)
+
+def send_decorated_email(email_input: list):
+    data_from_array = DataFromArray(email_input)
+    mailer = WorkMailer(data_from_array)
     mailer.send()
     return True
