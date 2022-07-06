@@ -1,8 +1,7 @@
 import os
 import smtplib
 
-from email_script.mailer import Mailer
-from email_script.input_list_parser import DataFromInputList
+from email_script.format_data import FormatData
 
 
 MAIL_SERVER = os.getenv("MAIL_SERVER", None)
@@ -11,12 +10,12 @@ SMTP_EMAIL = os.getenv("SMTP_EMAIL", None)
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", None)
 
 
-class WorkMailer(Mailer):
+class WorkMailer(FormatData):
     """[summary]
     Connects to SMTP server and sends email
     """
 
-    def __init__(self, data_from_xml: DataFromInputList):
+    def __init__(self, data_from_xml):
         super().__init__(data_from_xml)
 
     def send(self):

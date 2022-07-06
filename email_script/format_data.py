@@ -8,14 +8,14 @@ SMTP_EMAIL = os.getenv("SMTP_EMAIL", None)
 
 
 def get_date(date):
-    date_type = [int(i) for i in date.split(",")]
+    date_type = [int(i) for i in date.split("-")]
     format_date = datetime.datetime(date_type[0], date_type[1], date_type[2]).strftime(
         "%d.%m.%Y"
     )
     return format_date
 
 
-class Mailer:
+class FormatData:
     def __init__(self, data_from_xml):
         self.msg = MIMEMultipart()
         self.msg["From"] = SMTP_EMAIL
@@ -24,7 +24,7 @@ class Mailer:
         self.data = {
             "email_address": data_from_xml.email_address,
             "prepayment_calc": "{:,}".format(int(data_from_xml.prepayment_calc)),
-            "calculation_type": "false" not in data_from_xml.calculation_type.lower(),
+            "calculation_type": data_from_xml.calculation_type,
             "loan_type": data_from_xml.loan_type,
             "months": int(data_from_xml.months),
             "loan_interest": round(float(data_from_xml.loan_interest), 2),
